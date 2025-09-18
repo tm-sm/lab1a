@@ -4,14 +4,14 @@
 
 package body Semaphores is
    protected body CountingSemaphore is
-      entry Wait when Count > 0 is -- To be completed
-      begin
-         Count := Count - 1;
-      end Wait;
-
-      entry Signal when Count < Max is -- To be completed
+      entry Wait when Count < Max is -- To be completed
       begin
          Count := Count + 1;
+      end Wait;
+
+      entry Signal when Count > 0 is -- To be completed
+      begin
+         Count := Count - 1;
       end Signal;
    end CountingSemaphore;
 end Semaphores;
