@@ -13,13 +13,14 @@ procedure ProducerConsumer_Prot is
 
    N : constant Integer := 10; -- Number of produced and consumed tokens per task
 	X : constant Integer := 3; -- Number of producers and consumers
-	
+
    -- Random Delays
    subtype Delay_Interval is Integer range 50..250;
    package Random_Delay is new Ada.Numerics.Discrete_Random (Delay_Interval);
    use Random_Delay;
    G : Generator;
 
+   Buf : Buffer.CircularBuffer;
    -- ==> Complete code: Use Buffer
 
    task type Producer;
@@ -31,9 +32,10 @@ procedure ProducerConsumer_Prot is
    begin
       Next := Clock;
       for I in 1..N loop
-			
+
          -- ==> Complete code: Write to Buffer
-			
+         Buf.Put(I);
+
          -- Next 'Release' in 50..250ms
          Next := Next + Milliseconds(Random(G));
          delay until Next;
@@ -47,18 +49,18 @@ procedure ProducerConsumer_Prot is
       Next := Clock;
       for I in 1..N loop
          -- Read from X
-			
          -- ==> Complete code: Read from Buffer
-			
+         Buf.Get(X);
+
          Put_Line(Integer'Image(X));
          Next := Next + Milliseconds(Random(G));
          delay until Next;
       end loop;
    end;
-	
+
 	P: array (Integer range 1..X) of Producer;
 	C: array (Integer range 1..X) of Consumer;
-	
+
 begin -- main task
    null;
 end ProducerConsumer_Prot;

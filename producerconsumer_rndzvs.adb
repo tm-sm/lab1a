@@ -7,10 +7,10 @@ use Ada.Real_Time;
 with Ada.Numerics.Discrete_Random;
 
 procedure ProducerConsumer_Rndzvs is
-	
+
    N : constant Integer := 10; -- Number of produced and consumed tokens per task
-	X : constant Integer := 3; -- Number of producers and consumers	
-	
+	X : constant Integer := 3; -- Number of producers and consumers
+
    -- Random Delays
    subtype Delay_Interval is Integer range 50..250;
    package Random_Delay is new Ada.Numerics.Discrete_Random (Delay_Interval);
@@ -25,7 +25,7 @@ procedure ProducerConsumer_Rndzvs is
    task type Producer;
 
    task type Consumer;
-   
+
    task body Buffer is
          Size: constant Integer := 4;
          type Index is mod Size;
@@ -36,22 +36,34 @@ procedure ProducerConsumer_Rndzvs is
       loop
          select
 				-- => Complete Code: Service Append
+            when Count + 1 /= 0 =>
+               accept Append(I: in Integer) do
+                  B(In_Ptr) := I;
+                  In_Ptr := In_Ptr + 1;
+                  Count := Count + 1;
+               end Append;
          or
 				-- => Complete Code: Service Take
+            when Count > 0 =>
+               accept Take(I: out Integer) do
+                  I := B(Out_Ptr);
+                  Out_Ptr := Out_Ptr + 1;
+                  Count := Count - 1;
+               end Take;
          or
-				-- => Termination
+            terminate;
          end select;
       end loop;
    end Buffer;
-      
+
    task body Producer is
       Next : Time;
    begin
       Next := Clock;
       for I in 1..N loop
-			
-         -- => Complete code: Write to X
 
+         -- => Complete code: Write to X
+         Buffer.Append(I);
          -- Next 'Release' in 50..250ms
          Next := Next + Milliseconds(Random(G));
          delay until Next;
@@ -65,16 +77,16 @@ procedure ProducerConsumer_Rndzvs is
       Next := Clock;
       for I in 1..N loop
          -- Complete Code: Read from X
-
+         Buffer.Take(X);
          Put_Line(Integer'Image(X));
          Next := Next + Milliseconds(Random(G));
          delay until Next;
       end loop;
    end;
-	
+
 	P: array (Integer range 1..X) of Producer;
 	C: array (Integer range 1..X) of Consumer;
-	
+
 begin -- main task
    null;
 end ProducerConsumer_Rndzvs;
