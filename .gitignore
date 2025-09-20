@@ -1,0 +1,11 @@
+*.o
+
+*.ali
+
+*.exe
+*.out
+*.bin
+*.elf
+
+*~
+*.swp
