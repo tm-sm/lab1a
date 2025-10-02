@@ -101,8 +101,8 @@ procedure PeriodicTasks_Priority is
    -- Running Tasks
 	-- NOTE: All tasks should have a minimum phase, so that they have the same time base!
 	
-   Task_1 : T(1, 20, Warm_Up_Time, 300, 100, 300); -- ID: 1
-	                                                   -- Priority: 20
+   Task_1 : T(1, 40, Warm_Up_Time, 300, 100, 300); -- ID: 1
+	                                                   -- Priority: 40
                                                       --	Phase: Warm_Up_Time (100)
 	                                                   -- Period 300, 
 	                                                   -- Computation Time: 100 (if correctly calibrated) 
@@ -115,12 +115,18 @@ procedure PeriodicTasks_Priority is
 	                                                   -- Computation Time: 100 (if correctly calibrated) 
 	                                                   -- Relative Deadline: 400
 
-   Task_3 : T(3, 40, Warm_Up_Time, 600, 100, 600); -- ID: 3
-	                                                   -- Priority: 40
+   Task_3 : T(3, 20, Warm_Up_Time, 600, 100, 600); -- ID: 3
+	                                                   -- Priority: 20
                                                       --	Phase: Warm_Up_Time (100)
 	                                                   -- Period 600, 
 	                                                   -- Computation Time: 100 (if correctly calibrated) 
-	                                                   -- Relative Deadline: 600      
+	                                                   -- Relative Deadline: 600     
+   Task_4 : T(4, 10, Warm_Up_Time, 1200, 200, 1200); -- ID: 4
+	                                                   -- Priority: 10
+                                                      --	Phase: Warm_Up_Time (100)
+	                                                   -- Period 1200, 
+	                                                   -- Computation Time: 200 (if correctly calibrated) 
+	                                                   -- Relative Deadline: 1200      
                                              
 	
 -- Main Program: Terminates after measuring start time	

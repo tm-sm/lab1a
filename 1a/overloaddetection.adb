@@ -5,7 +5,7 @@ with Ada.Float_Text_IO;
 
 with Ada.Real_Time; use Ada.Real_Time;
 
-procedure PeriodicTasks_Priority is
+procedure Overloaddetection is
    package Duration_IO is new Ada.Text_IO.Fixed_IO(Duration);
    package Int_IO is new Ada.Text_IO.Integer_IO(Integer);
 	
@@ -13,6 +13,31 @@ procedure PeriodicTasks_Priority is
 	Calibrator: constant Integer := 490; -- Calibration for correct timing
 	                                     -- ==> Change parameter for your architecture!
 	Warm_Up_Time: constant Integer := 100; -- Warmup time in milliseconds
+
+   protected Overload_Flag is
+      procedure Wave;
+      procedure Clear;
+      function Raised return Boolean;
+   private
+      Flag : Boolean := False;
+   end Overload_Flag;
+
+   protected body Overload_Flag is
+      procedure Wave is
+      begin
+         Flag := True;
+      end Wave;
+
+      procedure Clear is
+      begin
+         Flag := False;
+      end Clear;
+
+      function Raised return Boolean is
+      begin
+         return Flag;
+      end Raised;
+   end Overload_Flag;
 	
 	-- Conversion Function: Time_Span to Float
 	function To_Float(TS : Time_Span) return Float is
@@ -98,11 +123,92 @@ procedure PeriodicTasks_Priority is
       end loop;
    end T;
 
+   task type H(Id: Integer; Prio: Integer; Phase: Integer; Period : Integer; 
+									 Computation_Time : Integer; Relative_Deadline: Integer) is
+      pragma Priority(Prio); -- A higher number gives a higher priority
+   end;
+
+   task body H is
+      Next : Time;
+		Release: Time;
+		Completed : Time;
+		Response : Time_Span;
+		Average_Response : Float;
+		Absolute_Deadline: Time;
+		WCRT: Time_Span; -- measured WCRT (Worst Case Response Time)
+      Dummy : Integer;
+		Iterations : Integer;
+   begin
+		-- Initial Release - Phase
+		Release := Clock + Milliseconds(Phase);
+		delay until Release;
+		Next := Release;
+		Iterations := 0;
+		Average_Response := 0.0;
+		WCRT := Milliseconds(0);
+      loop
+         Next := Release + Milliseconds(Period);
+			Absolute_Deadline := Release + Milliseconds(Relative_Deadline);
+         -- Simulation of User Function
+			for I in 1..Computation_Time loop
+				Dummy := F(Calibrator); 
+			end loop;	
+			Completed := Clock;
+			Response := Completed - Release;
+			Average_Response := (Float(Iterations) * Average_Response + To_Float(Response)) / Float(Iterations + 1);
+			if Response > WCRT then
+				WCRT := Response;
+			end if;
+			Iterations := Iterations + 1;			
+			Put("Task ");
+			Int_IO.Put(Id, 1);
+			Put("- Release: ");
+			Duration_IO.Put(To_Duration(Release - Start), 2, 3);
+			Put(", Completion: ");
+			Duration_IO.Put(To_Duration(Completed - Start), 2, 3);
+			Put(", Response: ");
+			Duration_IO.Put(To_Duration(Response), 1, 3);
+			Put(", WCRT: ");
+			Ada.Float_Text_IO.Put(To_Float(WCRT), fore => 1, aft => 3, exp => 0);	
+			Put(", Next Release: ");
+			Duration_IO.Put(To_Duration(Next - Start), 2, 3);
+			if Completed > Absolute_Deadline then 
+				Put(" ==> Task ");
+				Int_IO.Put(Id, 1);
+				Put(" violates Deadline!");
+			end if;
+         Put_Line("");
+         Overload_Flag.Wave;
+
+			Release := Next;
+         delay until Release;
+      end loop;
+   end H;
+
+   Hyperperiod : constant Time_Span := Milliseconds(1200);
+
+   task Watchdog is
+      pragma Priority(50);
+   end Watchdog;
+
+   task body Watchdog is
+      Next_Check : Time := Clock + Hyperperiod;
+   begin
+      loop
+         delay until Next_Check;
+         if not Overload_Flag.Raised then
+            Put_Line("System overload!");
+         end if;
+         Overload_Flag.Clear;
+         Next_Check := Next_Check + Hyperperiod;
+      end loop;
+   end Watchdog;
+
    -- Running Tasks
 	-- NOTE: All tasks should have a minimum phase, so that they have the same time base!
 	
-   Task_1 : T(1, 20, Warm_Up_Time, 300, 100, 300); -- ID: 1
-	                                                   -- Priority: 20
+   Task_1 : T(1, 40, Warm_Up_Time, 300, 100, 300); -- ID: 1
+	                                                   -- Priority: 40
                                                       --	Phase: Warm_Up_Time (100)
 	                                                   -- Period 300, 
 	                                                   -- Computation Time: 100 (if correctly calibrated) 
@@ -115,16 +221,24 @@ procedure PeriodicTasks_Priority is
 	                                                   -- Computation Time: 100 (if correctly calibrated) 
 	                                                   -- Relative Deadline: 400
 
-   Task_3 : T(3, 40, Warm_Up_Time, 600, 100, 600); -- ID: 3
-	                                                   -- Priority: 40
+   Task_3 : T(3, 20, Warm_Up_Time, 600, 100, 600); -- ID: 3
+	                                                   -- Priority: 20
                                                       --	Phase: Warm_Up_Time (100)
 	                                                   -- Period 600, 
 	                                                   -- Computation Time: 100 (if correctly calibrated) 
-	                                                   -- Relative Deadline: 600      
-                                             
+	                                                   -- Relative Deadline: 600     
+
+   Task_4 : T(4, 10, Warm_Up_Time, 1200, 200, 1200); -- ID: 4
+	                                                   -- Priority: 10
+                                                      --	Phase: Warm_Up_Time (100)
+	                                                   -- Period 1200, 
+	                                                   -- Computation Time: 200 (if correctly calibrated) 
+	                                                   -- Relative Deadline: 1200    
+
+   Task_H : H(0, 1, Warm_Up_Time, 1200, 100, 1200); 
 	
 -- Main Program: Terminates after measuring start time	
 begin
    Start := Clock; -- Central Start Time
    null;
-end PeriodicTasks_Priority;
+end Overloaddetection;

@@ -101,7 +101,7 @@ procedure PeriodicTasks_Priority is
    -- Running Tasks
 	-- NOTE: All tasks should have a minimum phase, so that they have the same time base!
 	
-   Task_1 : T(1, 20, Warm_Up_Time, 300, 100, 300); -- ID: 1
+   Task_1 : T(1, 40, Warm_Up_Time, 300, 100, 300); -- ID: 1
 	                                                   -- Priority: 20
                                                       --	Phase: Warm_Up_Time (100)
 	                                                   -- Period 300, 
@@ -115,7 +115,7 @@ procedure PeriodicTasks_Priority is
 	                                                   -- Computation Time: 100 (if correctly calibrated) 
 	                                                   -- Relative Deadline: 400
 
-   Task_3 : T(3, 40, Warm_Up_Time, 600, 100, 600); -- ID: 3
+   Task_3 : T(3, 20, Warm_Up_Time, 600, 100, 600); -- ID: 3
 	                                                   -- Priority: 40
                                                       --	Phase: Warm_Up_Time (100)
 	                                                   -- Period 600, 
