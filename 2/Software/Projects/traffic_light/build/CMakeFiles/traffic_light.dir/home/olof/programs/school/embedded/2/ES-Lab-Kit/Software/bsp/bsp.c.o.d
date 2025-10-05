@@ -1,0 +1,80 @@
+CMakeFiles/traffic_light.dir/home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/bsp/bsp.c.o: \
+ /home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/bsp/bsp.c \
+ /usr/include/newlib/stdio.h /usr/include/newlib/_ansi.h \
+ /usr/include/newlib/newlib.h /usr/include/newlib/_newlib_version.h \
+ /usr/include/newlib/sys/config.h /usr/include/newlib/machine/ieeefp.h \
+ /usr/include/newlib/sys/features.h /usr/include/newlib/sys/cdefs.h \
+ /usr/include/newlib/machine/_default_types.h \
+ /usr/lib/gcc/arm-none-eabi/14.2.1/include/stddef.h \
+ /usr/lib/gcc/arm-none-eabi/14.2.1/include/stdarg.h \
+ /usr/include/newlib/sys/reent.h /usr/include/newlib/_ansi.h \
+ /usr/include/newlib/sys/_types.h /usr/include/newlib/machine/_types.h \
+ /usr/include/newlib/sys/lock.h /usr/include/newlib/sys/stdio.h \
+ /home/olof/pico-sdk/src/rp2_common/hardware_pwm/include/hardware/pwm.h \
+ /home/olof/pico-sdk/src/common/pico_base_headers/include/pico.h \
+ /home/olof/pico-sdk/src/common/pico_base_headers/include/pico/types.h \
+ /home/olof/pico-sdk/src/common/pico_base_headers/include/pico/assert.h \
+ /usr/lib/gcc/arm-none-eabi/14.2.1/include/stdbool.h \
+ /usr/include/newlib/assert.h \
+ /usr/lib/gcc/arm-none-eabi/14.2.1/include/stdint.h \
+ /home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/Projects/traffic_light/build/generated/pico_base/pico/version.h \
+ /home/olof/pico-sdk/src/common/pico_base_headers/include/pico/config.h \
+ /home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/Projects/traffic_light/build/generated/pico_base/pico/config_autogen.h \
+ /home/olof/pico-sdk/src/boards/include/boards/pico2.h \
+ /home/olof/pico-sdk/src/rp2_common/cmsis/include/cmsis/rename_exceptions.h \
+ /home/olof/pico-sdk/src/rp2350/pico_platform/include/pico/platform.h \
+ /home/olof/pico-sdk/src/rp2_common/pico_platform_compiler/include/pico/platform/compiler.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_regs/include/hardware/platform_defs.h \
+ /home/olof/pico-sdk/src/common/pico_base_headers/include/pico/types.h \
+ /home/olof/pico-sdk/src/rp2_common/pico_platform_sections/include/pico/platform/sections.h \
+ /home/olof/pico-sdk/src/rp2_common/pico_platform_panic/include/pico/platform/panic.h \
+ /home/olof/pico-sdk/src/rp2_common/pico_platform_common/include/pico/platform/common.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/addressmap.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/sio.h \
+ /home/olof/pico-sdk/src/common/pico_base_headers/include/pico/error.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/pwm.h \
+ /home/olof/pico-sdk/src/rp2_common/hardware_base/include/hardware/address_mapped.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/accessctrl.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/accessctrl.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/pwm.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/dreq.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/intctrl.h \
+ /home/olof/pico-sdk/src/rp2_common/hardware_uart/include/hardware/uart.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/uart.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/uart.h \
+ /home/olof/pico-sdk/src/rp2_common/hardware_resets/include/hardware/resets.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/resets.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/resets.h \
+ /home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/bsp/psram.h \
+ /usr/include/newlib/stdlib.h /usr/include/newlib/machine/stdlib.h \
+ /usr/include/newlib/alloca.h \
+ /home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/bsp/bsp.h \
+ /home/olof/pico-sdk/src/common/pico_stdlib_headers/include/pico/stdlib.h \
+ /home/olof/pico-sdk/src/rp2_common/pico_stdio/include/pico/stdio.h \
+ /home/olof/pico-sdk/src/common/pico_time/include/pico/time.h \
+ /home/olof/pico-sdk/src/rp2_common/hardware_timer/include/hardware/timer.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/timer.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/timer.h \
+ /home/olof/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/sio.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/interp.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/pads_bank0.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/pads_bank0.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/io_bank0.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/io_bank0.h \
+ /home/olof/pico-sdk/src/rp2_common/hardware_irq/include/hardware/irq.h \
+ /home/olof/pico-sdk/src/rp2350/pico_platform/include/pico/platform/cpu_regs.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/m33.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/m33.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/nvic.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/scb.h \
+ /home/olof/pico-sdk/src/rp2_common/hardware_gpio/include/hardware/gpio_coproc.h \
+ /home/olof/pico-sdk/src/rp2_common/pico_stdio_uart/include/pico/stdio_uart.h \
+ /home/olof/pico-sdk/src/rp2_common/hardware_i2c/include/hardware/i2c.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/i2c.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/i2c.h \
+ /home/olof/pico-sdk/src/rp2_common/hardware_spi/include/hardware/spi.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_structs/include/hardware/structs/spi.h \
+ /home/olof/pico-sdk/src/rp2350/hardware_regs/include/hardware/regs/spi.h \
+ /home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/bsp/ht16k33.h \
+ /home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/bsp/mma8452q.h

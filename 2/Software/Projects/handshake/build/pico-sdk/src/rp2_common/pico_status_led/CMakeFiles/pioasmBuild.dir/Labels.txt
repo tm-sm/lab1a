@@ -1,0 +1,13 @@
+# Target labels
+ pioasmBuild
+# Source files and their labels
+/home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/Projects/handshake/build/pico-sdk/src/rp2_common/pico_status_led/CMakeFiles/pioasmBuild
+/home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/Projects/handshake/build/pico-sdk/src/rp2_common/pico_status_led/CMakeFiles/pioasmBuild.rule
+/home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/Projects/handshake/build/pico-sdk/src/rp2_common/pico_status_led/CMakeFiles/pioasmBuild-complete.rule
+/home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/Projects/handshake/build/pico-sdk/src/rp2_common/pico_status_led/pioasm/src/pioasmBuild-stamp/pioasmBuild-build.rule
+/home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/Projects/handshake/build/pico-sdk/src/rp2_common/pico_status_led/pioasm/src/pioasmBuild-stamp/pioasmBuild-configure.rule
+/home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/Projects/handshake/build/pico-sdk/src/rp2_common/pico_status_led/pioasm/src/pioasmBuild-stamp/pioasmBuild-download.rule
+/home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/Projects/handshake/build/pico-sdk/src/rp2_common/pico_status_led/pioasm/src/pioasmBuild-stamp/pioasmBuild-install.rule
+/home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/Projects/handshake/build/pico-sdk/src/rp2_common/pico_status_led/pioasm/src/pioasmBuild-stamp/pioasmBuild-mkdir.rule
+/home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/Projects/handshake/build/pico-sdk/src/rp2_common/pico_status_led/pioasm/src/pioasmBuild-stamp/pioasmBuild-patch.rule
+/home/olof/programs/school/embedded/2/ES-Lab-Kit/Software/Projects/handshake/build/pico-sdk/src/rp2_common/pico_status_led/pioasm/src/pioasmBuild-stamp/pioasmBuild-update.rule
